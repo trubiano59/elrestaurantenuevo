@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="icon" type="imagen/png" href="{% static 'img/logo.png' %}">
+    <title>Nuestro Restaurante</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Poller+One&display=swap">
+</head>
+
+<body>
+    <!--<"Barra de Navegación"">-->
+    <header class="main-header">
+
+        <div class="header-wrap">
+
+            <div class="wrap-logo-header">
+                <a ref="/" class="logo-header">
+                    <span>Web<span>De</span><span>Restaurante</span>
+                </a>
+            </div>
+
+            <div class="wrap-nav-header">
+                <nav class="nav-header">
+                    <input type="checkbox" id="check">
+                    <label for="check" class="checkbtn">
+                        <i class="toggle-menu">
+                            <img class="logo" src="{% static 'img/logo.png' %}" alt="logo">
+                        </i>
+                    </label>
+
+                    <ul class="main-menu">
+                        <li class="menu-item"><a href="{% url 'index' %}">Inicio</a></li>
+                        <li class="menu-item"><a href="{% url 'nosotros' %}">Nosotros</a></li>
+                        <li class="menu-item"><a href="{% url 'carta' %}">Carta</a></li>
+                        <li class="menu-item"><a href="{% url 'blog' %}">Blog</a></li>
+                        <li class="menu-item"><a href="{% url 'buscadorcomidas' %}">Buscador de Comidas</a></li>
+                        <li class="menu-item"><a href="{% url 'sucursales' %}">Sucursales</a></li>
+                        <li class="menu-item"><a id="nav-main-contact" href="{% url 'contacto' %}">Contacto</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+    </header>
+
+    <div class="hero" style="background-image:url({% static 'img/restaurant-logo.jpeg' %})">
+
+
+    </div>
+
+    <!--FIN DE NAVEGACION-->
+
+
+    <!-- Tarjetas de comida -->
+    <section class="wrap section">
+        <div class="wrap-title-section">
+            <h2>Tarjetas de Comida</h2>
+        </div>
+        <div class="column-4 columns">
+            {% for comida in comidas %}
+            <div style="background:url({% static comida.imagen %})center;background-size: cover;"
+                class="tarjeta-rest">
+                <div class="wrap-text_tarjeta-rest">
+                    <h3>{{ comida.nombre }}</h3>
+                    <p>Gran variedad de {{ comida.categoria }}.</p>
+                    <div class="cta-wrap_tarjeta-rest">
+                        <div class="precio_tarjeta-rest">
+                            <span>Precios desde ${{ comida.precio }}</span>
+                        </div>
+                        <div class="cta_tarjeta-rest">
+                            <a href="">Pedir ahora</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+            
+        </div>
+    </section>
+
+    <!-- Menu Restaurante -->
+    <section class="wrap section">
+        <div class="wrap-title-section">
+            <h1>Menús de Restaurante</h1>
+        </div>
+        <div class="column-3 columns">
+            <div class="menu-restaurante"
+                style="background: url(img/foto\ restaurante\ con\ menu\ en\ pared.jpg) center;background-size: cover;">
+                <h3>Menús mediodia</h3>
+                <hr>
+                <h4>Primeros Platos</h4>
+                <p>HAMBURGUESA EN PLATO CON PAPAS.</p>
+                <p class="precio-menu">Precio: <span>1300$</span></p>
+                <p>HAMBURGUESA DE POLLO CON PAPAS.</p>
+                <p class="precio-menu">Precio: <span>1500$</span></p>
+                <p>MILANESAS CON PAPA.</p>
+                <p class="precio-menu">Precio: <span>1250$</span></p>
+                <p>EMPANADAS DE JAMON Y QUESO.</p>
+                <p class="precio-menu">Precio: <span>1100$</span></p>
+                <br>
+                <h4>Segundos Platos</h4>
+                <p>EMPANADAS DE CARNE.</p>
+                <p class="precio-menu">Precio: <span>1200$</span></p>
+                <p>SANDWICH DE MILANESA DE CARNE EN PAN CASERO.</p>
+                <p class="precio-menu">Precio: <span>1300$</span></p>
+                <p>PANCHO CON PAPAS.</p>
+                <p class="precio-menu">Precio: <span>1050$</span></p>
+                <p>MILANESAS NAPOLITANAS.</p>
+                <p class="precio-menu">Precio: <span>1400$</span></p>
+                <br>
+            </div>
+            <div class="menu-restaurante"
+                style="background: url(img/foto\ restaurante\ con\ menu\ en\ pared.jpg) center;background-size: cover;">
+                <h3>Menús noche</h3>
+                <hr>
+                <h4>Primeros Platos</h4>
+                <p>CARNE CON PAPA Y MORRONES.</p>
+                <p class="precio-menu">Precio: <span>1600$</span></p>
+                <p>ENSALADA CON PECHUGA DE POLLO A LA BRASA</p>
+                <p class="precio-menu">Precio: <span>1900$</span></p>
+                <br>
+                <h4>Segundos Platos</h4>
+                <p>MILANESA A CABALLO.</p>
+                <p class="precio-menu">Precio: <span>2000$</span></p>
+                <p>MILANESAS CON PAPAS BASTON FRITAS.</p>
+                <p class="precio-menu">Precio: <span>1900$</span></p>
+                <br>
+                <p>PIZZA FUGAZZETA.</p>
+                <p class="precio-menu">Precio: <span>1550$</span></p>
+            </div>
+            <div class="menu-restaurante"
+                style="background: url(img/foto\ restaurante\ con\ menu\ en\ pared.jpg) center;background-size: cover;">
+                <h3>Menús fin de semana</h3>
+                <hr>
+                <h4>Primeros Platos</h4>
+                <p>HAMBURGUESA CON PAPAS.</p>
+                <p class="precio-menu">Precio: <span>1550$</span></p>
+                <p>BIFE DE RES A LA PARRILLA.</p>
+                <p class="precio-menu">Precio: <span>2100$</span></p>
+                <p>CANELONES A LA ITALIANA.</p>
+                <p class="precio-menu">Precio: <span>1850$</span></p>
+                <p>ENSALADA CON PECHUGA DE POLLO A LA BRASA.</p>
+                <p class="precio-menu">Precio: <span>1800$</span></p>
+                <br>
+                <h4>Segundos Platos</h4>
+                <p>MILANESAS CON PAPAS.</p>
+                <p class="precio-menu">Precio: <span>1750$</span></p>
+                <p>MILANESAS NAPOLITANAS.</p>
+                <p class="precio-menu">Precio: <span>1400$</span></p>
+                <p>PASTAS.</p>
+                <p class="precio-menu">Precio: <span>1550$</span></p>
+                <p>LASAGNA DE CARNE.</p>
+                <p class="precio-menu">Precio: <span>2150$</span></p>
+                <br>
+                <p>CARNE DE POLLO A LA PARRILLA Y ENSALADA.</p>
+                <p class="precio-menu">Precio: <span>1900$</span></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería de imágenes -->
+
+    <!--VIDEO-->
+    <section class="section">
+        <div class="wrap-title-section">
+            <h2>Video Hamburguesa</h2>
+        </div>
+        <video class="center" src="{% static 'img/video hamburguesa1.mp4' %}" loop="" autoplay="" muted="" controls
+            width="300vw"></video>
+    </section>
+
+    <section class="section">
+        <div class="wrap-title-section">
+            <h2>Galería de imágenes</h2>
+        </div>
+        <div class="column-4 galeria-platos">
+            {% for comida in comidas %}
+            <div class="galeria">
+                <div class="imagen-galeria">
+                    <img src="{% static comida.imagen %}" alt="">
+                </div>
+                <div class="pie">
+                    <p>{{ comida.nombre }}</p>
+                </div>
+            </div>
+            
+            {% endfor %}
+            
+        </div>
+    </section>
+    </main>
+    <footer class="footer">
+        <div class="wrap-footer">
+            <div class="text-element-footer element-footer">
+                <h3 class="main-c">web de Restaurante</h3>
+                <!--<h3>Restaurante</h3>-->
+                <p>-Nuestro restaurante se caracteriza por la atención personalizada, la rapidez en la entrega de
+                    los pedidos en el local y en los domicilios.</p>
+            </div>
+            <div class="text-element-footer element-footer">
+                <h5>Dirección</h5>
+                <ul>
+                    <li>Avda San Martin 768</li>
+                    <li>Departamento - GC</li>
+                    <li>De Domingo a Martes de 11:00 a 22:00 horas</li>
+                    <li>Movil: (+261) 600 00 00 </li>
+                    <li>Tel: (+261) 900 00 00 </li>
+                </ul>
+            </div>
+            <div class="text-element-footer element-footer">
+                <h5>Más información</h5>
+
+            </div>
+            <div class="rrss-element-footer element-footer">
+                <h5>Redes Sociales</h5>
+                <!-- Facebook -->
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com" target="_blank"
+                    role="button"><i class="fab fa-facebook-f"><img src="{% static 'img/facebook.png' %}" alt="" width="20"
+                            height="20"></i></a>
+                <!-- WhatApp -->
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.whatsapp.com" target="_blank"
+                    role="button"><i class="fab fa-whatsapp"><img src="{% static 'img/WhatApp.png' %}" alt="" width="20"
+                            height="20"></i></a>
+                <!-- Instagram -->
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com" target="_blank"
+                    role="button"><i class="fab fa-instagram"><img src="{% static 'img/instagram.png' %}" alt="" width="20"
+                            height="20"></i></a>
+            </div>
+            <!-- Section: Social media -->
+            <!-- Copyright -->
+            <div class="text-center p-3">
+                <a class="text-white" href="">© Cohort -p </a>
+            </div>
+        </div>
+        </div>
+        <div class="footer-creds">
+            <div class="copy-creds">
+                <p-1>©2023 · Todos los derechos reservados.</p-1>
+            </div>
+            <div class="legal-creds">
+                <ul>
+                    <li><a href="#">Política de Privacidad</a></li>
+                    <li><a href="#">Política de Cookies</a></li>
+                    <li><a href="#">Aviso Legal</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+<script src="./assets/js/script.js"></script>
+
+</html>
